@@ -22,8 +22,8 @@ info.onAdd = function(map) {
 };
 
 info.update = function(props) {
-  this._div.innerHTML = '<h4>US Population Density</h4>' + (props ?
-    '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>' :
+  this._div.innerHTML = '<h4>US Zoo Density</h4>' + (props ?
+    '<b>' + props.name + '</b><br />' + props.density + ' zoos / state<sup></sup>' :
     'Hover over a state');
 };
 
@@ -32,14 +32,11 @@ info.addTo(map);
 ////////////////////////////////////////////////////////////////////////////////
 // get color depending on population density value
 function getColor(d) {
-  return d > 1000 ? '#800026' :
-    d > 500 ? '#BD0026' :
-    d > 200 ? '#E31A1C' :
-    d > 100 ? '#FC4E2A' :
-    d > 50 ? '#FD8D3C' :
-    d > 20 ? '#FEB24C' :
-    d > 10 ? '#FED976' :
-    '#FFEDA0';
+  return d > 30? '#006837' :
+    d > 20 ? '#31a354' :
+    d > 10 ? '#78c679' :
+    d > 0 ? '#c2e699' :
+    '#ffffcc';
 }
 // set color of the json based on its Population Density
 function style(feature) {
@@ -107,7 +104,7 @@ var legend = L.control({
 legend.onAdd = function(map) {
 
   var div = L.DomUtil.create('div', 'info legend'),
-    grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+    grades = [0, 10, 20, 30],
     labels = [],
     from, to;
 
